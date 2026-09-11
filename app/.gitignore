@@ -1,0 +1,16 @@
+# Le secret ne va JAMAIS dans le depot : sel de session, cle de
+# chiffrement des donnees bancaires, mot de passe de la base.
+src/config.local.php
+
+# La base, les documents televerses et les journaux non plus.
+donnees/*.sqlite
+donnees/*.sqlite-wal
+donnees/*.sqlite-shm
+donnees/documents/
+donnees/journal/
+donnees/sauvegardes/
+
+*.log
+*.jsonl
+.DS_Store
+apercus/*.png

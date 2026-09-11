@@ -1,0 +1,4 @@
+app/src/config.local.php
+app/donnees/
+*.zip
+__pycache__/

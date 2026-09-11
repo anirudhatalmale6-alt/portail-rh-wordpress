@@ -1,0 +1,19 @@
+# Tout passe par index.php. Il n'y a pas un seul autre .php accessible
+# depuis le web, donc pas de page oubliee qui n'aurait pas verifie les
+# droits.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.php [QSA,L]
+</IfModule>
+
+# Ceinture et bretelles : si le repertoire donnees/ se retrouvait un jour
+# SOUS la racine web (deplacement, mauvaise copie), ces regles empechent
+# de servir une base, un journal ou un document.
+<FilesMatch "\.(sqlite|sqlite3|log|jsonl|sql|ini|local\.php)$">
+  Require all denied
+</FilesMatch>
+
+Options -Indexes
+ServerSignature Off
